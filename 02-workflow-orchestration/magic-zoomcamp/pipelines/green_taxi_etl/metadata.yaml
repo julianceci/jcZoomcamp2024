@@ -1,0 +1,157 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - clean_data
+  - questions2
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: load_api_data_gt
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: load_api_data_gt
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - green_taxi_to_postgres
+  - data_to_parquet_gcs
+  - questions
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: clean_data
+  retry_config: null
+  status: updated
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_api_data_gt
+  uuid: clean_data
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    data_provider: postgres
+    data_provider_profile: dev
+    data_provider_schema: mage
+    data_provider_table: green_taxi
+    dbt: {}
+    disable_query_preprocessing: false
+    export_write_policy: replace
+    limit: 1000
+    use_raw_sql: false
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: green_taxi_to_postgres
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - clean_data
+  uuid: green_taxi_to_postgres
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    data_provider: postgres
+    data_provider_profile: dev
+    data_provider_schema: mage
+    export_write_policy: replace
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: mystic field
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: mystic_field
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    data_provider: postgres
+    data_provider_profile: dev
+    data_provider_schema: mage
+    export_write_policy: replace
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: data_to_parquet_gcs
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - clean_data
+  uuid: data_to_parquet_gcs
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: questions
+  retry_config: null
+  status: updated
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - clean_data
+  uuid: questions
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: questions2
+  retry_config: null
+  status: updated
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - load_api_data_gt
+  uuid: questions2
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-02-16 20:04:33.924272+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: green_taxi_etl
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: green_taxi_etl
+variables_dir: /home/src/mage_data/magic-zoomcamp
+widgets: []
