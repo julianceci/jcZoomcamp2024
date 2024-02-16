@@ -1,0 +1,3 @@
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "spiritual_mystic"}, "timestamp": 1708090689, "user": null}
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "profound_sun"}, "timestamp": 1708093156, "user": null}
+{"operation": "create", "resource": {"type": "pipeline", "uuid": "load_to_gcp_copy"}, "timestamp": 1708094669, "user": null}
