@@ -48,5 +48,6 @@ def load_data_from_api(*args, **kwargs):
     
     #dfs['lpep_pickup_YM'] = dfs['lpep_pickup_datetime'].dt.strftime('%Y-%m')
     #print(dfs['lpep_pickup_YM'].unique())
+    #print(dfs.dtypes)
 
     return dfs

@@ -38,7 +38,7 @@ blocks:
     data_provider: bigquery
     data_provider_profile: default
     data_provider_schema: ny_taxi
-    data_provider_table: yellow_cab_data
+    data_provider_table: yelow_cab_data
     dbt: {}
     disable_query_preprocessing: false
     export_write_policy: append
